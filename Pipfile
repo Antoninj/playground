@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 gunicorn = "*"
 Flask = "*"
+pytest = "*"
+flake8 = "*"
 
 [dev-packages]
 

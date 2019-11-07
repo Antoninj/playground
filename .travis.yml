@@ -1,0 +1,5 @@
+deploy:
+  provider: heroku
+  api_key:
+    secure: "648a6ef1-e93f-4dfb-a565-518d09b9af4d"
+  app: co-detector
