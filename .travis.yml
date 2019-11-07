@@ -1,5 +1,12 @@
+language: python
+python:
+  - "3.7.5"
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+# command to run tests
 deploy:
   provider: heroku
   api_key:
-    secure: "648a6ef1-e93f-4dfb-a565-518d09b9af4d"
+    secure: ""
   app: co-detector
