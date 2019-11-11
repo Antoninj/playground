@@ -1,13 +1,11 @@
 language: python
 python:
-  - "3.7.5"
-# command to install dependencies
+- 3.7.5
 install:
-  - pip install -r requirements.txt
-# command to run tests
+- pip install -r requirements.txt
 script: pytest
 deploy:
   provider: heroku
   api_key:
-    secure: ""
+    secure: CQfVKHb1fz6sV/G9uU2bveRdfKxJXnhLRnF8STNcU2uBXwrqTe+KaDdvdHhwECS1diVNWSanI8O2TXowLRUXeG+RY5g1lrELQ2wOvNDjSjGmA2fkCKIx85sRrm/Z/L+sZZ39ukyl2bTXDXFGQ1m/TJ2QnBsPZ7WlhYmKz/q9o1jWVOayYtVh1izA5YCdJAB0FeWBexhDdPfKVR2hmU55aZt6y0GGn5w1bsxXvvj7SOIqgxghtAR/hWJ1p3zKT2eDQuR0CJK/X7wOSQCl5eX5xgSa59cKagW/p1PqzWCeNC1d+wYcnUOkV3CZAO3MyC2X1QoPCEkWTomqXFU+zRuWP4DKKKYCFhUUdaOd+Seklo/7PSDxwT0z+AgCNSsUe5W8fafKvB2yl/GSm9B0G4tt9+va1hEhr/YleW3EThPf1SJSL+U0rxhmXWyP04RX1kYu4SKBl+XrBEh8QHuMyZ4rBKU5Fl8QK1Z+yr9/75UxJoaN5AXfzEUPW23uAeaNfx38zmM9lfoH3bXX2fHuB9aaln27y1NAsW9GB/0md8A2CgcGUCHTRDJFx8xiLvkWaJWl5EqSKGAkzhYYfovj17gCJkEFC+TPqLuEiHMvrAZrBbyOOUUWI/Gm4M7Hi0ru88L9FEcQO7vDukPY4Y7msJstUTEhMh9SeoITC6Agqkf3580=
   app: co-detector
