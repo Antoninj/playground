@@ -8,6 +8,7 @@ def homepage():
 
     return """
     <h1>Hello heroku</h1>
+    <p>This is the latest change</p>
     <p>It is currently {time}.</p>
 
     <img src="http://loremflickr.com/600/400">
