@@ -8,6 +8,14 @@ gunicorn = "*"
 Flask = "*"
 pytest = "*"
 flake8 = "*"
+sqlalchemy = "*"
+"psycopg2-binary" = "*"
+flask-debugtoolbar = "*"
+flask-sqlalchemy = "*"
+flask-marshmallow = "*"
+marshmallow-sqlalchemy = "*"
+marshmallow = "*"
+flask-mail = "*"
 
 [dev-packages]
 
