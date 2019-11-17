@@ -17,6 +17,7 @@ marshmallow-sqlalchemy = "*"
 marshmallow = "*"
 flask-mail = "*"
 flask-cors = "*"
+sphinx = "*"
 
 [dev-packages]
 
