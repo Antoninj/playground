@@ -28,7 +28,7 @@ http {
       server_name example.com default_server;
 
 
-      root /app/frontend/build;
+      root /app/frontend/dist;
       index index.html;
       location / {
           try_files $uri /$uri index.html;
