@@ -18,6 +18,8 @@ marshmallow = "*"
 flask-mail = "*"
 flask-cors = "*"
 sphinx = "*"
+python-coveralls = "*"
+pytest-cov = "*"
 
 [dev-packages]
 
