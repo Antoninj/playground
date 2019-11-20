@@ -9,17 +9,18 @@ app = Flask(__name__)
 CORS(app)
 
 ### Logging config
-fileConfig('config/logging.cfg')
+fileConfig("config/logging.cfg")
 
 # the toolbar is only enabled in debug mode:
 app.debug = True
 
 # set a 'SECRET_KEY' to enable the Flask session cookies
-app.config['SECRET_KEY'] = 'mysecret key'
+app.config["SECRET_KEY"] = "mysecret key"
 
 toolbar = DebugToolbarExtension(app)
 
-@app.route('/')
+
+@app.route("/")
 def homepage():
     app.logger.info("Logging some stuff")
 
@@ -32,10 +33,12 @@ def homepage():
 
     <img src="http://loremflickr.com/600/400">
     </body>
-    """.format(time=the_time)
+    """.format(
+        time=the_time
+    )
 
 
-@app.route('/somedata')
+@app.route("/somedata")
 @cross_origin()
 def send_simple_data():
     app.logger.info("Getting some data")
@@ -43,5 +46,5 @@ def send_simple_data():
     return jsonify(text_response)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True, use_reloader=True)

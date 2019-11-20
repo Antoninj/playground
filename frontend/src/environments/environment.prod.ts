@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  FLASK_API_URL : 'http://localhost:5000',
-
+  FLASK_API_URL : 'https://anto-playground.herokuapp.com',
 };
