@@ -4,8 +4,13 @@ from logging.config import fileConfig
 from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_restplus import Api, Resource, fields
+
+from apis import api
 
 app = Flask(__name__)
+
+api.init_app(app)
 CORS(app)
 
 ### Logging config
@@ -18,24 +23,6 @@ app.debug = True
 app.config["SECRET_KEY"] = "mysecret key"
 
 toolbar = DebugToolbarExtension(app)
-
-
-@app.route("/")
-def homepage():
-    app.logger.info("Logging some stuff")
-
-    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
-    return """
-    <body>
-    <h1>Hello heroku</h1>
-    <p>This is the latest change</p>
-    <p>It is currently {time}.</p>
-
-    <img src="http://loremflickr.com/600/400">
-    </body>
-    """.format(
-        time=the_time
-    )
 
 
 @app.route("/somedata")
