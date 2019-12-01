@@ -1,43 +1,11 @@
-from flask_cors import cross_origin
 from flask_restplus import api, fields, Resource, Namespace
 
-api = Namespace("todos", description="TODO operations")
+from app.main.controller.todo_dao import TodoDAO
+from app.main.model.todo_dto import TodoDTO
 
-todo = api.model(
-    "Todo",
-    {
-        "id": fields.Integer(readOnly=True, description="The task unique identifier"),
-        "task": fields.String(required=True, description="The task details"),
-    },
-)
+api = TodoDTO.api
 
-
-class TodoDAO(object):
-    def __init__(self):
-        self.counter = 0
-        self.todos = []
-
-    def get(self, id):
-        for todo in self.todos:
-            if todo["id"] == id:
-                return todo
-        api.abort(404, "Todo {} doesn't exist".format(id))
-
-    def create(self, data):
-        todo = data
-        todo["id"] = self.counter = self.counter + 1
-        self.todos.append(todo)
-        return todo
-
-    def update(self, id, data):
-        todo = self.get(id)
-        todo.update(data)
-        return todo
-
-    def delete(self, id):
-        todo = self.get(id)
-        self.todos.remove(todo)
-
+todo = TodoDTO.todo
 
 DAO = TodoDAO()
 DAO.create({"task": "Build an API"})

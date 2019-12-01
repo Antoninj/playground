@@ -1,0 +1,50 @@
+import unittest
+
+from flask import jsonify
+from flask_cors import cross_origin
+from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
+
+from app import blueprint
+from app.main.model import user
+
+
+from app.main import create_app, db
+
+app = create_app("test")
+app.register_blueprint(blueprint)
+
+app.app_context().push()
+
+manager = Manager(app)
+
+migrate = Migrate(app, db)
+
+manager.add_command("db", MigrateCommand)
+
+
+@manager.command
+def run():
+    app.run()
+
+
+@app.route("/somedata")
+@cross_origin()
+def send_simple_data():
+    app.logger.info("Getting some data")
+    text_response = "Hello from Flask"
+    return jsonify(text_response)
+
+
+@manager.command
+def test():
+    """Runs the unit tests."""
+    tests = unittest.TestLoader().discover("app/test", pattern="test*.py")
+    result = unittest.TextTestRunner(verbosity=2).run(tests)
+    if result.wasSuccessful():
+        return 0
+    return 1
+
+
+if __name__ == "__main__":
+    manager.run()

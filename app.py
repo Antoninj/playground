@@ -1,12 +1,10 @@
-from datetime import datetime
 from logging.config import fileConfig
 
 from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 from flask_debugtoolbar import DebugToolbarExtension
-from flask_restplus import Api, Resource, fields
 
-from apis import api
+from app.main.controller import api
 
 app = Flask(__name__)
 

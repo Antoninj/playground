@@ -21,6 +21,12 @@ sphinx = "*"
 python-coveralls = "*"
 pytest-cov = "*"
 flask-restplus = "*"
+flask-bcrypt = "*"
+flask-migrate = "*"
+pyjwt = "*"
+flask-script = "*"
+flask-testing = "*"
+logging = "*"
 
 [dev-packages]
 
