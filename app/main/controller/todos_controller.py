@@ -11,6 +11,7 @@ DAO = TodoDAO(api)
 DAO.create({"task": "Build an API"})
 DAO.create({"task": "?????"})
 DAO.create({"task": "profit!"})
+DAO.create({"task": "New Task!"})
 
 
 @api.route("/")
