@@ -1,3 +1,4 @@
+import os
 import unittest
 
 from flask import jsonify
@@ -11,7 +12,7 @@ from app.main.model import user
 
 from app.main import create_app, db
 
-app = create_app("test")
+app = create_app(os.getenv("FLASK_CONFIG") or "dev")
 app.register_blueprint(blueprint)
 
 app.app_context().push()
