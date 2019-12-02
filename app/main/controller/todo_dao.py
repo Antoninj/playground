@@ -1,8 +1,6 @@
-from app.main.controller.todos_controller import api
-
-
 class TodoDAO(object):
-    def __init__(self):
+    def __init__(self, api):
+        self.todo_api = api
         self.counter = 0
         self.todos = []
 
@@ -10,7 +8,7 @@ class TodoDAO(object):
         for todo in self.todos:
             if todo["id"] == id:
                 return todo
-        api.abort(404, "Todo {} doesn't exist".format(id))
+        self.todo_api.abort(404, "Todo {} doesn't exist".format(id))
 
     def create(self, data):
         todo = data

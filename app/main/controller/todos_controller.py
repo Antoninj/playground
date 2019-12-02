@@ -1,4 +1,4 @@
-from flask_restplus import api, fields, Resource, Namespace
+from flask_restplus import Resource
 
 from app.main.controller.todo_dao import TodoDAO
 from app.main.model.todo_dto import TodoDTO
@@ -7,7 +7,7 @@ api = TodoDTO.api
 
 todo = TodoDTO.todo
 
-DAO = TodoDAO()
+DAO = TodoDAO(api)
 DAO.create({"task": "Build an API"})
 DAO.create({"task": "?????"})
 DAO.create({"task": "profit!"})
