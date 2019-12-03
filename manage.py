@@ -8,6 +8,7 @@ from flask_script import Manager
 
 from app import blueprint
 from app.main.model import user
+from app.main.model import blacklist
 
 
 from app.main import create_app, db

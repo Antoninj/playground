@@ -2,10 +2,11 @@ from flask_restplus import Resource
 
 from app.main.adapter.todo_dao import TodoDAO
 from app.main.model.todo_dto import TodoDTO
+from app.main.util.auth_decorator import token_required
 
 api = TodoDTO.api
 
-todo = TodoDTO.todo
+_todo = TodoDTO.todo
 
 DAO = TodoDAO(api)
 DAO.create({"task": "Build an API"})
@@ -19,14 +20,15 @@ class TodoList(Resource):
     """Shows a list of all todos, and lets you POST to add new tasks"""
 
     @api.doc("list_todos")
-    @api.marshal_list_with(todo)
+    @api.marshal_list_with(_todo)
     def get(self):
         """List all tasks"""
         return DAO.todos
 
     @api.doc("create_todo")
-    @api.expect(todo)
-    @api.marshal_with(todo, code=201)
+    @api.expect(_todo)
+    @token_required
+    @api.marshal_with(_todo, code=201)
     def post(self):
         """Create a new task"""
         return DAO.create(api.payload), 201
@@ -39,7 +41,7 @@ class Todo(Resource):
     """Show a single todo item and lets you delete them"""
 
     @api.doc("get_todo")
-    @api.marshal_with(todo)
+    @api.marshal_with(_todo)
     def get(self, id):
         """Fetch a given resource"""
         return DAO.get(id)
@@ -51,8 +53,8 @@ class Todo(Resource):
         DAO.delete(id)
         return "", 204
 
-    @api.expect(todo)
-    @api.marshal_with(todo)
+    @api.expect(_todo)
+    @api.marshal_with(_todo)
     def put(self, id):
         """Update a task given its identifier"""
         return DAO.update(id, api.payload)
