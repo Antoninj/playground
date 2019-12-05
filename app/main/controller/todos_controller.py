@@ -1,4 +1,6 @@
-from flask_restplus import Resource
+from flask import jsonify
+from flask_cors import cross_origin
+from flask_restplus import Resource, cors
 
 from app.main.adapter.todo_dao import TodoDAO
 from app.main.model.todo_dto import TodoDTO
@@ -15,6 +17,7 @@ DAO.create({"task": "profit!"})
 DAO.create({"task": "New Task!"})
 
 
+@cors.crossdomain(origin="*")
 @api.route("/")
 class TodoList(Resource):
     """Shows a list of all todos, and lets you POST to add new tasks"""
@@ -34,6 +37,7 @@ class TodoList(Resource):
         return DAO.create(api.payload), 201
 
 
+@cors.crossdomain(origin="*")
 @api.route("/<int:id>")
 @api.response(404, "Todo not found")
 @api.param("id", "The task identifier")

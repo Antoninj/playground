@@ -1,16 +1,19 @@
 from flask import request
-from flask_restplus import Resource
+from flask_restplus import Resource, cors
 
 from app.main.model.user_dto import UserDto
+from app.main.util.auth_decorator import admin_token_required
 from ..service.user_service import save_new_user, get_all_users, get_a_user
 
 api = UserDto.api
 _user = UserDto.user
 
 
+@cors.crossdomain(origin="*")
 @api.route("/")
 class UserList(Resource):
     @api.doc("list_of_registered_users")
+    @admin_token_required
     @api.marshal_list_with(_user, envelope="data")
     def get(self):
         """List all registered users"""
@@ -25,6 +28,7 @@ class UserList(Resource):
         return save_new_user(data=data)
 
 
+@cors.crossdomain(origin="*")
 @api.route("/<public_id>")
 @api.param("public_id", "The User identifier")
 @api.response(404, "User not found.")
