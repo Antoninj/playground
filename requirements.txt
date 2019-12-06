@@ -35,9 +35,9 @@ jsonschema==3.2.0
 mako==1.1.0
 markupsafe==1.1.1
 marshmallow-sqlalchemy==0.21.0
-marshmallow==3.2.2
+marshmallow==3.3.0
 mccabe==0.6.1
-more-itertools==8.0.0
+more-itertools==8.0.1
 packaging==19.2
 pluggy==0.13.1
 psycopg2-binary==2.8.4
