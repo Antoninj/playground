@@ -29,9 +29,10 @@ class TodoList(Resource):
         return DAO.todos
 
     @api.doc("create_todo")
-    @api.expect(_todo)
+    @api.expect(_todo, validate=True)
     @token_required
     @api.marshal_with(_todo, code=201)
+    @api.response(201, "Todo successfully created.")
     def post(self):
         """Create a new task"""
         return DAO.create(api.payload), 201
@@ -57,7 +58,8 @@ class Todo(Resource):
         DAO.delete(id)
         return "", 204
 
-    @api.expect(_todo)
+    @api.doc("update_todo")
+    @api.expect(_todo, validate=True)
     @api.marshal_with(_todo)
     def put(self, id):
         """Update a task given its identifier"""
