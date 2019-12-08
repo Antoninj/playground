@@ -8,7 +8,7 @@ class Todo(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     todo_id = db.Column(db.String(100), unique=True)
-    task__description = db.Column(db.String(255), unique=True, nullable=False)
+    task_description = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     last_edited_at = db.Column(db.DateTime, nullable=False)
 

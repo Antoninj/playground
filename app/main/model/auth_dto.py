@@ -2,7 +2,7 @@ from flask_restplus import Namespace, fields
 
 
 class AuthDto:
-    api = Namespace("auth", description="authentication related operations")
+    api = Namespace("auth", description="Authentication related operations")
     user_auth = api.model(
         "Authentication details",
         {

@@ -9,7 +9,7 @@ def save_new_todo(data):
     creation_date = datetime.datetime.utcnow()
     new_todo = Todo(
         todo_id=str(uuid.uuid4()),
-        task__description=data["task"],
+        task_description=data["task_description"],
         created_at=creation_date,
         last_edited_at=creation_date,
     )
@@ -21,8 +21,14 @@ def get_all_todos():
     return Todo.query.all()
 
 
-def get_a_todo(todo_id):
+def get_todo(todo_id):
     return Todo.query.filter_by(todo_id=todo_id).first()
+
+
+def delete_todo(todo_id):
+    todo = Todo.query.filter_by(todo_id=todo_id)
+    todo.delete(synchronize_session=False)
+    db.session.commit()
 
 
 def save_changes(data):
