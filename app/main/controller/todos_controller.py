@@ -1,8 +1,6 @@
-from flask import jsonify, request
-from flask_cors import cross_origin
+from flask import request
 from flask_restplus import Resource, cors
 
-from app.main.adapter.todo_dao import TodoDAO
 from app.main.model.todo_dto import TodoDTO
 from app.main.service.todo_service import (
     get_all_todos,
@@ -15,12 +13,6 @@ from app.main.util.auth_decorator import token_required
 api = TodoDTO.api
 
 _todo = TodoDTO.todo
-
-DAO = TodoDAO(api)
-DAO.create({"task": "Build an API"})
-DAO.create({"task": "?????"})
-DAO.create({"task": "profit!"})
-DAO.create({"task": "New Task!"})
 
 
 @cors.crossdomain(origin="*")
