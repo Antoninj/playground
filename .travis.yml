@@ -1,15 +1,16 @@
 language: python
 python:
-  - 3.7.5
+- 3.7.5
 install:
-  - pip install pipenv
-  - pipenv install --dev
+- pip install pipenv
+- pipenv install --dev
 script:
-  - pipenv run coverage run --source=app -m unittest
+- pipenv run coverage run --source=app -m unittest
 after_success:
-  - pipenv run coveralls
+- pipenv run coveralls
 deploy:
   provider: heroku
   api_key:
-    secure: CQfVKHb1fz6sV/G9uU2bveRdfKxJXnhLRnF8STNcU2uBXwrqTe+KaDdvdHhwECS1diVNWSanI8O2TXowLRUXeG+RY5g1lrELQ2wOvNDjSjGmA2fkCKIx85sRrm/Z/L+sZZ39ukyl2bTXDXFGQ1m/TJ2QnBsPZ7WlhYmKz/q9o1jWVOayYtVh1izA5YCdJAB0FeWBexhDdPfKVR2hmU55aZt6y0GGn5w1bsxXvvj7SOIqgxghtAR/hWJ1p3zKT2eDQuR0CJK/X7wOSQCl5eX5xgSa59cKagW/p1PqzWCeNC1d+wYcnUOkV3CZAO3MyC2X1QoPCEkWTomqXFU+zRuWP4DKKKYCFhUUdaOd+Seklo/7PSDxwT0z+AgCNSsUe5W8fafKvB2yl/GSm9B0G4tt9+va1hEhr/YleW3EThPf1SJSL+U0rxhmXWyP04RX1kYu4SKBl+XrBEh8QHuMyZ4rBKU5Fl8QK1Z+yr9/75UxJoaN5AXfzEUPW23uAeaNfx38zmM9lfoH3bXX2fHuB9aaln27y1NAsW9GB/0md8A2CgcGUCHTRDJFx8xiLvkWaJWl5EqSKGAkzhYYfovj17gCJkEFC+TPqLuEiHMvrAZrBbyOOUUWI/Gm4M7Hi0ru88L9FEcQO7vDukPY4Y7msJstUTEhMh9SeoITC6Agqkf3580=
+    secure: p7lC3fKRqHfJUCi8kRtrNkXtX5r4LWBkn8nyqVwCrmC8qAdsn8eewZLRB1E6+sSgfkYd5LE+IDMdz5hnlVPj6AYE5lsPt4Efi8Gq7mUUU8ruyNAfR0fQ3ffqfNUfqXYmOaJ//M12jNn7FW0Ga0y5T1etdVL8PaDZbPjWE6UhJXzsYhUuSqjtyF3kikj5x0XU7MlQOyiwbK4tMLCEwH3bDq8jVt2JHAJXfXFnscJ2Q8C5iRu81C9Iqut7SwzKd+o0p3cECbeNEm4bOZ+J/ExoaAPjQrIzBr8Egxo9/knMCZBmepHrKGOefKHzKcgID1O2ctFQ2eL/OjEwEGWAjz3zS1hl8xd7osI2TABLRzW2d3nH7PKq81o3QSEI1moVo8UQUsYK6n39Fx1mnRhmIBKWwA/QU+j9Ehxr1FRpY4E0E8HO6VdRTYq34T/uYSMvY4HzXaz+UhPMCx1YK3fpwlo1qsV+xF0MDKnBIy+XbJ+/JI6Ok+3HXl/ygjvpZu3L95bB8BJUX6DTrvQpHca67wlQELhp/bVysxseX4ll6ua9rAPMv5jiKi9tZBRj0OOJXNyp/AfYpgLNAvdDBgRE/4RQMAWQIrdCUQzrNXmaWTpM94xP4Ffa5gwjZMktsKLUvorKu5ixq9d8hjyTUIFvcL3K18YpAO9sSHB02FkBLZp1TY4=
+    run: "python manage.py db upgrade"
   app: anto-playground
