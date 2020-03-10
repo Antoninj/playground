@@ -26,6 +26,7 @@ flask-migrate = "*"
 pyjwt = "*"
 flask-script = "*"
 flask-testing = "*"
+werkzeug = "==0.16.1"
 
 [dev-packages]
 
