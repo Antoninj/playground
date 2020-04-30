@@ -8,6 +8,7 @@
 # playground
 Playground repo to try out technologies i'm interested in including:
 
-- Heroku cloud provider
-- Flask RestPlus
-- Angular
+- Flask RestPlus REST API hosted on Heroku
+- Angular frontend hosted on Netlify
+- Black python code formatter
+- Travis for CI/CD
