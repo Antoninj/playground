@@ -6,4 +6,8 @@
 
 
 # playground
-Playground repo to try out technologies i'm interested in
+Playground repo to try out technologies i'm interested in including:
+
+- Heroku cloud provider
+- Flask RestPlus
+- Angular
